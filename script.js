@@ -1,8 +1,9 @@
 (() => {
   // ---- Ayarlar -------------------------------------------------------------
-  // Çıkış tarihi: 19 Kasım 2026, ziyaretçinin yerel saatine göre gece yarısı.
-  // Tarih değişirse yalnızca bu satırı güncellemek yeterli.
-  const RELEASE = new Date(2026, 10, 19, 0, 0, 0);
+  // Çıkış anı: 19 Kasım 2026 00:00 Türkiye saati (UTC+3). Ziyaretçi nerede
+  // olursa olsun herkes aynı ana sayar. Tarih değişirse bu satırı güncelleyin.
+  const RELEASE = new Date('2026-11-19T00:00:00+03:00');
+  const TZ = 'Europe/Istanbul';
   // İlerleme çubuğunun başlangıcı: ilk fragmanın yayınlandığı gün.
   const WAIT_START = new Date(Date.UTC(2023, 11, 5));
 
@@ -19,6 +20,7 @@
       shareText: (d) => d > 0 ? `GTA VI'ya ${d} gün kaldı!` : `GTA VI'ya saatler kaldı!`,
       shareOut: 'GTA VI çıktı!',
       event: 'GTA VI çıkışı',
+      tz: '00:00 Türkiye saati',
       disclaimer: 'Hayran yapımı, resmî olmayan bir sitedir. Rockstar Games veya Take-Two Interactive ile bağlantısı yoktur. Grand Theft Auto, ilgili sahiplerinin tescilli markasıdır.',
       other: 'EN',
       locale: 'tr-TR',
@@ -35,6 +37,7 @@
       shareText: (d) => d > 0 ? `${d} days until GTA VI!` : 'Just hours until GTA VI!',
       shareOut: 'GTA VI is out!',
       event: 'GTA VI release',
+      tz: '00:00 Turkey time',
       disclaimer: 'Unofficial fan-made site. Not affiliated with Rockstar Games or Take-Two Interactive. Grand Theft Auto is a trademark of its respective owners.',
       other: 'TR',
       locale: 'en-US',
@@ -62,7 +65,7 @@
       if (typeof v === 'string') el.textContent = v;
     });
     $('lang').textContent = t.other;
-    $('dateText').textContent = RELEASE.toLocaleDateString(t.locale, { day: 'numeric', month: 'long', year: 'numeric' });
+    $('dateText').textContent = RELEASE.toLocaleDateString(t.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: TZ });
     tick();
   }
 
@@ -114,15 +117,14 @@
 
   // ---- Takvime ekle (.ics) -------------------------------------------------
   $('ics').addEventListener('click', () => {
-    const ymd = (d) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
-    const end = new Date(RELEASE); end.setDate(end.getDate() + 1);
+    const utc = (d) => d.toISOString().replace(/[-:]|\.\d{3}/g, '');
     const ics = [
       'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//gta-vi-countdown//TR',
       'BEGIN:VEVENT',
       'UID:gta-vi-release@gta-vi-countdown',
-      `DTSTAMP:${new Date().toISOString().replace(/[-:]|\.\d{3}/g, '')}`,
-      `DTSTART;VALUE=DATE:${ymd(RELEASE)}`,
-      `DTEND;VALUE=DATE:${ymd(end)}`,
+      `DTSTAMP:${utc(new Date())}`,
+      `DTSTART:${utc(RELEASE)}`,
+      `DTEND:${utc(new Date(RELEASE.getTime() + 3600000))}`,
       `SUMMARY:${t.event}`,
       'END:VEVENT', 'END:VCALENDAR',
     ].join('\r\n');
@@ -138,30 +140,6 @@
     store.set(lang);
     applyLang();
   });
-
-  // ---- Sahne süsleri (sabit tohumlu, her yüklemede aynı) --------------------
-  let seed = 6;
-  const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
-
-  // Yıldızlar: tek bir öğenin box-shadow'u olarak
-  const stars = [];
-  for (let i = 0; i < 90; i++) {
-    const a = (0.35 + rnd() * 0.65).toFixed(2);
-    stars.push(`${(rnd() * 100).toFixed(2)}vw ${(rnd() * 38).toFixed(2)}vh 0 ${rnd() < 0.15 ? 1 : 0}px rgba(255,255,255,${a})`);
-  }
-  $('stars').style.boxShadow = stars.join(',');
-
-  // Ufuktaki şehir silüeti
-  let rects = '';
-  let x = 0;
-  while (x < 1000) {
-    const w = 8 + rnd() * 22;
-    const fromCenter = Math.abs(x - 500) / 500;           // merkezde alçak ki güneş görünsün
-    const hgt = 6 + rnd() * (18 + 70 * Math.min(1, Math.abs(fromCenter - 0.55) < 0.3 ? 1 : 0.25));
-    rects += `<rect x="${x.toFixed(1)}" y="${(100 - hgt).toFixed(1)}" width="${(w + 0.5).toFixed(1)}" height="${hgt.toFixed(1)}"/>`;
-    x += w + (rnd() < 0.2 ? rnd() * 14 : 0);
-  }
-  $('skyline').innerHTML = rects;
 
   applyLang();
   setInterval(tick, 1000);
