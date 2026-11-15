@@ -8,7 +8,13 @@ Grand Theft Auto VI'nın çıkışına (19 Kasım 2026) Türkiye saatiyle (00:00
 
 ## Arka plan görseli
 
-Arka plan olarak kullanmak istediğiniz oyun görselini `assets/bg.jpg` adıyla ekleyin (yatay, en az 1920 px genişlik önerilir). Dosya yoksa koyu bir zemin gösterilir.
+Kaynak görsel `assets/bg.jpg` (3840×2160). Sayfa bunu doğrudan yüklemez; tarayıcı ekran boyutuna ve piksel yoğunluğuna göre aşağıdaki küçültülmüş WebP sürümlerinden uygun olanı seçer:
+
+- Yatay: `bg-1280/1920/2560/3840.webp` (eski tarayıcılar için `bg-1920.jpg`)
+- Dikey (telefon/tablet): karakterlere kırpılmış `bg-portrait-900/1400/1997.webp`
+- Paylaşım önizlemesi: `og.jpg`
+
+Görseli değiştirirseniz bu dosyaları da yeniden üretmeniz gerekir.
 
 ## Yayınlama (GitHub Pages)
 
