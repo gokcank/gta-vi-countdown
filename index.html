@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>GTA VI Geri Sayım</title>
+  <meta name="description" content="Grand Theft Auto VI çıkışına ne kadar kaldı? 19 Kasım 2026'ya canlı geri sayım.">
+  <meta name="theme-color" content="#14062b">
+  <meta property="og:title" content="GTA VI Geri Sayım">
+  <meta property="og:description" content="19 Kasım 2026'ya canlı geri sayım.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23ffd36e'/%3E%3Cstop offset='1' stop-color='%23ff3d8b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2314062b'/%3E%3Ctext x='32' y='45' font-family='Impact,sans-serif' font-size='36' text-anchor='middle' fill='url(%23g)'%3EVI%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Sahne: tamamen CSS/SVG ile çizilmiş özgün gün batımı -->
+  <div class="scene" aria-hidden="true">
+    <div class="stars" id="stars"></div>
+    <div class="sun"></div>
+    <svg class="skyline" id="skyline" viewBox="0 0 1000 100" preserveAspectRatio="none"></svg>
+    <div class="water"><div class="glint"></div></div>
+    <svg class="palm palm-left" viewBox="0 0 400 600">
+      <defs>
+        <path id="leaf" d="M0,0 C35,-55 110,-62 185,18 C176,14 170,16 164,8 C158,10 150,6 146,-2 C138,2 130,-4 127,-11 C118,-8 110,-14 108,-20 C98,-18 90,-23 88,-28 C76,-26 66,-28 62,-32 C44,-30 22,-18 0,0Z"/>
+      </defs>
+      <path d="M186,600 C170,440 176,300 214,172 L226,176 C196,300 196,440 214,600Z"/>
+      <g transform="translate(220,176)">
+        <use href="#leaf" transform="rotate(-8)"/>
+        <use href="#leaf" transform="rotate(-48) scale(.92)"/>
+        <use href="#leaf" transform="rotate(28) scale(.8)"/>
+        <use href="#leaf" transform="scale(-1,1) rotate(-12)"/>
+        <use href="#leaf" transform="scale(-1,1) rotate(-52) scale(.95)"/>
+        <use href="#leaf" transform="scale(-1,1) rotate(24) scale(.82)"/>
+        <use href="#leaf" transform="rotate(-88) scale(.7)"/>
+      </g>
+    </svg>
+    <svg class="palm palm-right" viewBox="0 0 400 600">
+      <path d="M186,600 C170,440 176,300 214,172 L226,176 C196,300 196,440 214,600Z"/>
+      <g transform="translate(220,176)">
+        <use href="#leaf" transform="rotate(-8)"/>
+        <use href="#leaf" transform="rotate(-48) scale(.92)"/>
+        <use href="#leaf" transform="rotate(28) scale(.8)"/>
+        <use href="#leaf" transform="scale(-1,1) rotate(-12)"/>
+        <use href="#leaf" transform="scale(-1,1) rotate(-52) scale(.95)"/>
+        <use href="#leaf" transform="scale(-1,1) rotate(24) scale(.82)"/>
+        <use href="#leaf" transform="rotate(-88) scale(.7)"/>
+      </g>
+    </svg>
+    <div class="vignette"></div>
+  </div>
+
+  <header class="topbar">
+    <button class="lang" id="lang" type="button" aria-label="Dil / Language">EN</button>
+  </header>
+
+  <main>
+    <p class="eyebrow">Grand Theft Auto</p>
+    <h1 class="logo" aria-label="GTA VI">VI</h1>
+    <p class="status" id="status" data-i18n="status">Çıkışa kalan süre</p>
+
+    <div class="countdown" id="countdown" role="timer" aria-live="off">
+      <div class="unit"><span class="num" id="d">--</span><span class="lbl" data-i18n="days">Gün</span></div>
+      <div class="unit"><span class="num" id="h">--</span><span class="lbl" data-i18n="hours">Saat</span></div>
+      <div class="unit"><span class="num" id="m">--</span><span class="lbl" data-i18n="minutes">Dakika</span></div>
+      <div class="unit"><span class="num" id="s">--</span><span class="lbl" data-i18n="seconds">Saniye</span></div>
+    </div>
+
+    <p class="date"><span id="dateText">19 Kasım 2026</span> <span class="dot">•</span> PS5 <span class="dot">•</span> Xbox Series X|S</p>
+
+    <div class="progress" id="progressWrap">
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="bar"><div class="fill" id="fill"></div></div>
+      <p class="progress-text" id="progressText"></p>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" id="share" type="button" data-i18n="share">Paylaş</button>
+      <button class="btn" id="ics" type="button" data-i18n="calendar">Takvime ekle</button>
+    </div>
+  </main>
+
+  <footer>
+    <p data-i18n="disclaimer">Hayran yapımı, resmî olmayan bir sitedir. Rockstar Games veya Take-Two Interactive ile bağlantısı yoktur. Grand Theft Auto, ilgili sahiplerinin tescilli markasıdır.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
