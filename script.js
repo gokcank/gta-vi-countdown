@@ -19,6 +19,9 @@
       factsTitle: 'Künye',
       timelineTitle: 'Zaman çizelgesi',
       upcoming: 'Yaklaşıyor',
+      trailersTitle: 'Fragmanlar ve bağlantılar',
+      officialLinks: 'Resmî bağlantılar',
+      watch: 'YouTube’da izle',
       sourcesTitle: 'Kaynaklar',
       updated: 'Son güncelleme',
       newTab: 'yeni sekmede açılır',
@@ -43,6 +46,9 @@
       factsTitle: 'At a glance',
       timelineTitle: 'Timeline',
       upcoming: 'Upcoming',
+      trailersTitle: 'Trailers and links',
+      officialLinks: 'Official links',
+      watch: 'Watch on YouTube',
       sourcesTitle: 'Sources',
       updated: 'Last updated',
       newTab: 'opens in a new tab',
@@ -96,6 +102,9 @@
     return n;
   }
 
+  const fmtDate = (iso) => new Date(iso + 'T00:00:00+03:00')
+    .toLocaleDateString(t.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: TZ });
+
   function extLink(label, url, cls) {
     const a = el('a', cls, label);
     a.href = url;
@@ -129,6 +138,30 @@
     }));
 
     renderTimeline();
+
+    $('trailers').replaceChildren(...(CONTENT.trailers || []).map((v) => {
+      const title = tx(v.title);
+      const a = extLink('', v.url, 'trailer');
+      a.setAttribute('aria-label', `${title} — ${t.watch} (${t.newTab})`);
+      const play = el('span', 'play');
+      play.setAttribute('aria-hidden', 'true');
+      const body = el('span', 'trailer-body');
+      body.append(
+        el('span', 'trailer-title', title),
+        el('span', 'trailer-meta', `${fmtDate(v.date)} · ${v.length}`),
+        el('span', 'trailer-cta', t.watch),
+      );
+      a.append(play, body);
+      const li = el('li');
+      li.append(a);
+      return li;
+    }));
+
+    $('links').replaceChildren(...(CONTENT.links || []).map((l) => {
+      const li = el('li');
+      li.append(extLink(tx(l.label), l.url, 'btn ext'));
+      return li;
+    }));
 
     const upd = $('updated');
     if (CONTENT.updated) {
@@ -177,7 +210,7 @@
       const when = new Date(e.date + 'T00:00:00+03:00');
       const upcoming = when.getTime() > now;
       const li = el('li', upcoming ? 'event upcoming' : 'event');
-      const time = el('time', 'event-date', when.toLocaleDateString(t.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: TZ }));
+      const time = el('time', 'event-date', fmtDate(e.date));
       time.dateTime = e.date;
       li.append(time, el('p', 'event-text', tx(e.text)));
       if (upcoming) li.append(el('span', 'badge', t.upcoming));

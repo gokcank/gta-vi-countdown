@@ -363,8 +363,88 @@ body {
   background: linear-gradient(to right, var(--gold), var(--orange));
 }
 
-.info a { color: var(--gold); text-underline-offset: 3px; }
-.info a:hover { color: var(--text); }
+/* Fragman kartları ve resmî bağlantılar */
+.trailers {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+/* Dört kart: geniş ekranda yan yana, orta genişlikte 2×2, telefonda alt alta */
+@media (max-width: 1100px) { .trailers { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .trailers { grid-template-columns: 1fr; } }
+.trailer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  padding: 16px 18px;
+  color: var(--text);
+  text-decoration: none;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 16px;
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+.trailer:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 211, 110, .6);
+  background: rgba(255, 255, 255, .1);
+}
+.play {
+  flex: none;
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--orange) 55%, var(--pink));
+  box-shadow: 0 6px 20px rgba(255, 61, 139, .4);
+}
+.play::after {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 13px;
+  border-style: solid;
+  border-width: 8px 0 8px 12px;
+  border-color: transparent transparent transparent #1a0630;
+}
+.trailer-body { display: block; min-width: 0; }
+.trailer-title {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.trailer-meta, .trailer-cta {
+  display: block;
+  margin-top: 3px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.trailer-cta { color: var(--gold); font-weight: 600; }
+
+.sub-title {
+  margin: 26px 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.btn.ext::after { content: " ↗"; color: var(--gold); }
+
+.fact-links a { color: var(--gold); text-underline-offset: 3px; }
+.fact-links a:hover { color: var(--text); }
 .info a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
 
 .foot {
@@ -388,7 +468,8 @@ body {
   font-size: 13px;
   line-height: 1.5;
 }
-.sources a { color: var(--muted); }
+.sources a { color: var(--muted); text-underline-offset: 3px; }
+.sources a:hover { color: var(--text); }
 .updated {
   margin-top: 14px;
   font-size: 12px;

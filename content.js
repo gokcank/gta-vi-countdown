@@ -64,6 +64,37 @@ window.GTA_CONTENT = {
     { date: '2026-11-19', text: { tr: 'Çıkış', en: 'Release' } },
   ],
 
+  // Fragman kartları: resmî YouTube kanalındaki videolara gider. `length` videonun süresidir.
+  trailers: [
+    {
+      title: { tr: 'İlk fragman', en: 'Trailer 1' },
+      date: '2023-12-05', length: '1:30',
+      url: 'https://www.youtube.com/watch?v=QdBZY2fkU-0',
+    },
+    {
+      title: { tr: 'İkinci fragman', en: 'Trailer 2' },
+      date: '2025-05-06', length: '2:47',
+      url: 'https://www.youtube.com/watch?v=VQRLujxTm3c',
+    },
+    {
+      title: { tr: 'Extended Look', en: 'An Extended Look' },
+      date: '2026-08-27', length: '26:48',
+      url: 'https://www.youtube.com/watch?v=tJbzMqJGH4k',
+    },
+    {
+      title: { tr: 'Çıkış fragmanı', en: 'Launch Trailer' },
+      date: '2026-10-15', length: '1:30',
+      url: 'https://www.youtube.com/watch?v=rz1B4B2yBZY',
+    },
+  ],
+
+  // Resmî sayfa ve mağaza bağlantıları.
+  links: [
+    { label: { tr: 'Rockstar Games — oyun sayfası', en: 'Rockstar Games — game page' }, url: 'https://www.rockstargames.com/VI' },
+    { label: 'PlayStation Store', url: 'https://store.playstation.com/tr-tr/product/EP1004-PPSA01547_00-GTAVISTANDARD001' },
+    { label: 'Xbox Store', url: 'https://www.xbox.com/tr-TR/games/store/grand-theft-auto-vi/9p3h4968grsm' },
+  ],
+
   // Sayfa sonunda listelenen kaynaklar.
   sources: [
     {
