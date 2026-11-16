@@ -32,16 +32,6 @@ window.GTA_CONTENT = {
       note: { tr: 'Florida’dan esinlenen kurgusal bir eyalet', en: 'A fictional state inspired by Florida' },
     },
     {
-      label: { tr: 'Türkiye fiyatı', en: 'Price in Türkiye' },
-      value: { tr: 'Standart\u00a03.999\u00a0TL · Ultimate\u00a04.999\u00a0TL', en: 'Standard\u00a03,999\u00a0TL · Ultimate\u00a04,999\u00a0TL' },
-      note: { tr: '16 Kasım 2026 itibarıyla', en: 'As of November 16, 2026' },
-      links: [
-        { label: 'PlayStation Store', url: 'https://store.playstation.com/tr-tr/product/EP1004-PPSA01547_00-GTAVISTANDARD001' },
-        { label: 'Xbox Store', url: 'https://www.xbox.com/tr-TR/games/store/grand-theft-auto-vi/9p3h4968grsm' },
-      ],
-    },
-    {
-      wide: true,
       label: { tr: 'Bölgeler', en: 'Regions' },
       value: {
         tr: 'Vice\u00a0City · Leonida\u00a0Keys · Grassrivers · Port\u00a0Gellhorn · Ambrosia · Mount\u00a0Kalaga',
@@ -49,6 +39,29 @@ window.GTA_CONTENT = {
       },
     },
   ],
+
+  // Fiyat tablosu: PS Store ve Xbox Store'un o bölgedeki liste fiyatları (dijital sürüm).
+  // `asOf` fiyatların mağazalardan okunduğu gündür; fiyatları güncellerken onu da değiştirin.
+  // Tutarlar sayı olarak yazılır, sayfa dile göre biçimlendirir (3.999 TL / 3,999 TL).
+  // İki mağazada fiyat farklıysa sayı yerine { ps: 79.99, xbox: 74.99 } yazın; ikisi de gösterilir.
+  prices: {
+    asOf: '2026-11-17',
+    rows: [
+      { region: { tr: 'Türkiye', en: 'Türkiye' }, currency: 'TRY', standard: 3999, ultimate: 4999 },
+      { region: { tr: 'ABD', en: 'United States' }, currency: 'USD', standard: 79.99, ultimate: 99.99 },
+      {
+        region: { tr: 'Euro bölgesi', en: 'Eurozone' },
+        note: { tr: 'Almanya mağazası', en: 'German store' },
+        currency: 'EUR', standard: 79.99, ultimate: 99.99,
+      },
+      { region: { tr: 'Birleşik Krallık', en: 'United Kingdom' }, currency: 'GBP', standard: 69.99, ultimate: 89.99 },
+      { region: { tr: 'Japonya', en: 'Japan' }, currency: 'JPY', standard: 9800, ultimate: 12280 },
+    ],
+    links: [
+      { label: 'PlayStation Store', url: 'https://store.playstation.com/tr-tr/product/EP1004-PPSA01547_00-GTAVISTANDARD001' },
+      { label: 'Xbox Store', url: 'https://www.xbox.com/tr-TR/games/store/grand-theft-auto-vi/9p3h4968grsm' },
+    ],
+  },
 
   // Zaman çizelgesi, eskiden yeniye. Tarihler Türkiye saatine göredir (YYYY-AA-GG).
   // Tarihi henüz gelmemiş satırlar kendiliğinden "yaklaşıyor" olarak işaretlenir.

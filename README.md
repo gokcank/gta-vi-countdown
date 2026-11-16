@@ -11,7 +11,8 @@ Grand Theft Auto VI'nın çıkışına (19 Kasım 2026) Türkiye saatiyle (00:00
 
 İlk ekranın altındaki bütün bilgiler `content.js` dosyasından gelir; her metnin Türkçe (`tr`) ve İngilizce (`en`) karşılığı vardır. Yeni bir bilgi eklemek ya da düzeltmek için yalnızca bu dosyayı değiştirin:
 
-- `facts`: künye kartları (çıkış tarihi, platformlar, fiyat…)
+- `facts`: künye kartları (çıkış tarihi, platformlar, karakterler…)
+- `prices`: fiyat tablosu (PS Store ve Xbox Store liste fiyatları). Tutarlar sayı olarak yazılır, sayfa dile göre biçimlendirir. `asOf` fiyatların okunduğu gündür. İki mağazada fiyat farklıysa sayı yerine `{ ps: …, xbox: … }` yazılır, ikisi de gösterilir.
 - `timeline`: zaman çizelgesi. Tarihi henüz gelmemiş satırlar kendiliğinden "Yaklaşıyor" olarak işaretlenir.
 - `trailers`, `links`: fragman kartları ve resmî bağlantılar. Videolar sayfaya gömülmez, yeni sekmede açılır.
 - `tracking`: çıkış sonrası takip kartları (PC sürümü, çevrimiçi mod…). Yeni bir duyuru geldiğinde ilgili kartın metnini güncelleyin. `tag: 'unverified'` resmî olmayan basın iddialarını "Doğrulanmadı", `tag: 'waiting'` henüz açıklanmamış konuları "Bekleniyor", `tag: 'confirmed'` resmî açıklamaya dayanan bilgileri "Açıklandı" olarak etiketler.

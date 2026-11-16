@@ -17,6 +17,10 @@
       calendar: 'Takvime ekle',
       about: 'Oyun hakkında ↓',
       factsTitle: 'Künye',
+      pricesTitle: 'Fiyatlar',
+      colRegion: 'Ülke',
+      colStandard: 'Standart',
+      asOf: (d) => `${d} itibarıyla`,
       timelineTitle: 'Zaman çizelgesi',
       upcoming: 'Yaklaşıyor',
       trailersTitle: 'Fragmanlar ve bağlantılar',
@@ -46,6 +50,10 @@
       calendar: 'Add to calendar',
       about: 'Game info ↓',
       factsTitle: 'At a glance',
+      pricesTitle: 'Prices',
+      colRegion: 'Country',
+      colStandard: 'Standard',
+      asOf: (d) => `As of ${d}`,
       timelineTitle: 'Timeline',
       upcoming: 'Upcoming',
       trailersTitle: 'Trailers and links',
@@ -135,9 +143,46 @@
     return box;
   }
 
+  // Fiyat tablosu: tutarlar sayfanın diline göre yazılır (3.999 TL / 3,999 TL, 79,99 $ / $79.99).
+  const SYMBOLS = { USD: '$', EUR: '€', GBP: '£', JPY: '¥' };
+  function money(v, cur) {
+    const n = v.toLocaleString(t.locale, { minimumFractionDigits: Number.isInteger(v) ? 0 : 2, maximumFractionDigits: 2 });
+    if (cur === 'TRY') return `${n}\u00a0TL`;
+    const sym = SYMBOLS[cur] || cur;
+    return lang === 'tr' ? `${n}\u00a0${sym}` : `${sym}${n}`;
+  }
+
+  function priceCell(v, cur) {
+    const td = el('td');
+    if (v && typeof v === 'object') {
+      // İki mağazada fiyat farklı: ikisi de alt alta gösterilir.
+      td.append(el('span', 'price-store', `PS\u00a0${money(v.ps, cur)}`), el('span', 'price-store', `Xbox\u00a0${money(v.xbox, cur)}`));
+    } else {
+      td.textContent = money(v, cur);
+    }
+    return td;
+  }
+
+  function renderPrices() {
+    const p = CONTENT.prices;
+    $('prices').hidden = !p;
+    if (!p) return;
+    $('priceRows').replaceChildren(...p.rows.map((r) => {
+      const th = el('th', null, tx(r.region));
+      th.scope = 'row';
+      if (r.note) th.append(el('span', 'price-note', tx(r.note)));
+      const tr = el('tr');
+      tr.append(th, priceCell(r.standard, r.currency), priceCell(r.ultimate, r.currency));
+      return tr;
+    }));
+    $('pricesAsOf').textContent = t.asOf(fmtDate(p.asOf));
+    $('priceLinks').replaceChildren(...(p.links || []).map((l) => extLink(tx(l.label), l.url)));
+  }
+
   function renderInfo() {
     $('facts').replaceChildren(...(CONTENT.facts || []).map(infoCard));
     $('tracking').replaceChildren(...(CONTENT.tracking || []).map(infoCard));
+    renderPrices();
 
     $('sources').replaceChildren(...(CONTENT.sources || []).map((s) => {
       const li = el('li');
