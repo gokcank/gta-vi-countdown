@@ -73,6 +73,22 @@
       <section class="sec" aria-labelledby="factsTitle">
         <h2 class="sec-title" id="factsTitle" data-i18n="factsTitle">Künye</h2>
         <dl class="facts" id="facts"></dl>
+        <div class="fact prices" id="prices" hidden>
+          <h3 class="fact-label" data-i18n="pricesTitle">Fiyatlar</h3>
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th scope="col" data-i18n="colRegion">Ülke</th>
+                <th scope="col" data-i18n="colStandard">Standart</th>
+                <!-- Sürüm adı özel ad: Türkçe görünümde "ULTİMATE" olmasın diye büyük yazıldı -->
+                <th scope="col">ULTIMATE</th>
+              </tr>
+            </thead>
+            <tbody id="priceRows"></tbody>
+          </table>
+          <p class="fact-note" id="pricesAsOf"></p>
+          <p class="fact-links" id="priceLinks"></p>
+        </div>
       </section>
 
       <section class="sec" aria-labelledby="timelineTitle">
