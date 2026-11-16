@@ -15,6 +15,11 @@
       days: 'Gün', hours: 'Saat', minutes: 'Dakika', seconds: 'Saniye',
       share: 'Paylaş',
       calendar: 'Takvime ekle',
+      about: 'Oyun hakkında ↓',
+      factsTitle: 'Künye',
+      sourcesTitle: 'Kaynaklar',
+      updated: 'Son güncelleme',
+      newTab: 'yeni sekmede açılır',
       copied: 'Bağlantı kopyalandı',
       progress: (p) => `İlk fragmandan beri süren bekleyiş: %${p} tamamlandı`,
       shareText: (d) => d > 0 ? `GTA VI'ya ${d} gün kaldı!` : `GTA VI'ya saatler kaldı!`,
@@ -32,6 +37,11 @@
       days: 'Days', hours: 'Hours', minutes: 'Minutes', seconds: 'Seconds',
       share: 'Share',
       calendar: 'Add to calendar',
+      about: 'Game info ↓',
+      factsTitle: 'At a glance',
+      sourcesTitle: 'Sources',
+      updated: 'Last updated',
+      newTab: 'opens in a new tab',
       copied: 'Link copied',
       progress: (p) => `The wait since the first trailer: ${p}% complete`,
       shareText: (d) => d > 0 ? `${d} days until GTA VI!` : 'Just hours until GTA VI!',
@@ -66,7 +76,59 @@
     });
     $('lang').textContent = t.other;
     $('dateText').textContent = RELEASE.toLocaleDateString(t.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: TZ });
+    renderInfo();
     tick();
+  }
+
+  // ---- Oyun bilgileri (content.js) -----------------------------------------
+  const CONTENT = window.GTA_CONTENT || {};
+  const tx = (v) => (v && typeof v === 'object' ? v[lang] || v.tr || '' : v || '');
+
+  function el(tag, cls, text) {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  }
+
+  function extLink(label, url, cls) {
+    const a = el('a', cls, label);
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.setAttribute('aria-label', `${label} (${t.newTab})`);
+    return a;
+  }
+
+  function renderInfo() {
+    const facts = $('facts');
+    facts.replaceChildren(...(CONTENT.facts || []).map((f) => {
+      const box = el('div', f.wide ? 'fact wide' : 'fact');
+      box.append(el('dt', null, tx(f.label)));
+      const dd = el('dd');
+      dd.append(el('span', 'fact-value', tx(f.value)));
+      if (f.note) dd.append(el('span', 'fact-note', tx(f.note)));
+      if (f.links) {
+        const links = el('span', 'fact-links');
+        links.append(...f.links.map((l) => extLink(tx(l.label), l.url)));
+        dd.append(links);
+      }
+      box.append(dd);
+      return box;
+    }));
+
+    $('sources').replaceChildren(...(CONTENT.sources || []).map((s) => {
+      const li = el('li');
+      li.append(extLink(tx(s.label), s.url));
+      return li;
+    }));
+
+    const upd = $('updated');
+    if (CONTENT.updated) {
+      upd.dateTime = CONTENT.updated;
+      upd.textContent = new Date(CONTENT.updated + 'T12:00:00Z')
+        .toLocaleDateString(t.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+    }
   }
 
   const pad = (n) => String(n).padStart(2, '0');

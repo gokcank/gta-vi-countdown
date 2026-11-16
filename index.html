@@ -38,6 +38,8 @@
   </header>
 
   <main>
+    <!-- İlk ekran: görsel ve sayaç -->
+    <section class="hero">
     <div class="panel">
       <h1 class="title">Grand Theft Auto <span>VI</span></h1>
       <p class="status" id="status" data-i18n="status">Çıkışa kalan süre</p>
@@ -59,12 +61,29 @@
       <div class="actions">
         <button class="btn primary" id="share" type="button" data-i18n="share">Paylaş</button>
         <button class="btn" id="ics" type="button" data-i18n="calendar">Takvime ekle</button>
+        <a class="btn" href="#about" data-i18n="about">Oyun hakkında ↓</a>
       </div>
 
       <p class="disclaimer" data-i18n="disclaimer">Hayran yapımı, resmî olmayan bir sitedir. Rockstar Games veya Take-Two Interactive ile bağlantısı yoktur. Grand Theft Auto, ilgili sahiplerinin tescilli markasıdır.</p>
     </div>
+    </section>
+
+    <!-- Oyun bilgileri: içerik content.js dosyasından gelir, script.js yerleştirir -->
+    <div class="info" id="about">
+      <section class="sec" aria-labelledby="factsTitle">
+        <h2 class="sec-title" id="factsTitle" data-i18n="factsTitle">Künye</h2>
+        <dl class="facts" id="facts"></dl>
+      </section>
+
+      <footer class="foot">
+        <h2 class="foot-title" data-i18n="sourcesTitle">Kaynaklar</h2>
+        <ul class="sources" id="sources"></ul>
+        <p class="updated"><span data-i18n="updated">Son güncelleme</span>: <time id="updated"></time></p>
+      </footer>
+    </div>
   </main>
 
+  <script src="content.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
