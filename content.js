@@ -3,7 +3,7 @@
 // Değişiklikten sonra `updated` tarihini de güncelleyin.
 window.GTA_CONTENT = {
   // Bilgilerin son gözden geçirildiği gün (YYYY-AA-GG).
-  updated: '2026-11-16',
+  updated: '2026-11-17',
 
   // Künye. `note` ve `links` isteğe bağlıdır; `wide: true` kartı tüm satıra yayar.
   // \u00a0 = bölünmez boşluk: iki kelimenin satır sonunda ayrılmasını önler.
@@ -57,6 +57,7 @@ window.GTA_CONTENT = {
     { date: '2025-05-02', text: { tr: 'İlk erteleme: yeni tarih 26 Mayıs 2026', en: 'First delay: new date May 26, 2026' } },
     { date: '2025-05-06', text: { tr: 'İkinci fragman', en: 'Second trailer' } },
     { date: '2025-11-06', text: { tr: 'İkinci erteleme: yeni tarih 19 Kasım 2026', en: 'Second delay: new date November 19, 2026' } },
+    { date: '2026-06-18', text: { tr: 'Kapak görseli duyuruldu', en: 'Cover art revealed' } },
     { date: '2026-06-25', text: { tr: 'Ön siparişler açıldı (PS Store ve Xbox Store)', en: 'Pre-orders open (PS Store and Xbox Store)' } },
     { date: '2026-08-27', text: { tr: 'Extended Look tanıtımı (Netflix, 26 dk)', en: 'Extended Look showcase (Netflix, 26 min)' } },
     { date: '2026-10-15', text: { tr: 'Çıkış fragmanı', en: 'Launch trailer' } },
@@ -97,7 +98,7 @@ window.GTA_CONTENT = {
 
   // Çıkış sonrası takip kartları. Yeni bir duyuru geldiğinde ilgili kartın metnini güncelleyin.
   // `tag` isteğe bağlıdır: 'waiting' = "Bekleniyor", 'unverified' = "Doğrulanmadı"
-  // (resmî olmayan basın iddiaları için). Kesinleşen bilgide `tag` satırını silin.
+  // (resmî olmayan basın iddiaları için), 'confirmed' = "Açıklandı" (resmî açıklamaya dayanan bilgi).
   tracking: [
     {
       label: { tr: 'PC sürümü', en: 'PC version' },
@@ -118,6 +119,7 @@ window.GTA_CONTENT = {
       label: { tr: 'Mevcut GTA ONLINE', en: 'Current GTA Online' },
       value: { tr: 'Çıkıştan sonra da desteklenecek', en: 'Stays supported after launch' },
       note: { tr: 'Take-Two Interactive açıklaması', en: 'Per Take-Two Interactive' },
+      tag: 'confirmed',
       links: [
         { label: { tr: 'Kaynak: Yahoo Tech', en: 'Source: Yahoo Tech' }, url: 'https://tech.yahoo.com/gaming/articles/gta-online-supported-beyond-gta-165020046.html' },
       ],

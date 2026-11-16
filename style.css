@@ -366,7 +366,12 @@ body {
   color: #1a0630;
   background: linear-gradient(to right, var(--gold), var(--orange));
 }
-/* Durum etiketleri: "bekleniyor" çerçeveli, "doğrulanmadı" pembe */
+/* Durum etiketleri: "bekleniyor" çerçeveli, "doğrulanmadı" pembe, "açıklandı" yeşil */
+.badge.confirmed {
+  color: #9af0c8;
+  background: rgba(96, 220, 170, .14);
+  box-shadow: inset 0 0 0 1px rgba(120, 230, 185, .6);
+}
 .badge.waiting {
   color: var(--gold);
   background: transparent;

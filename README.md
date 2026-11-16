@@ -14,7 +14,7 @@ Grand Theft Auto VI'nın çıkışına (19 Kasım 2026) Türkiye saatiyle (00:00
 - `facts`: künye kartları (çıkış tarihi, platformlar, fiyat…)
 - `timeline`: zaman çizelgesi. Tarihi henüz gelmemiş satırlar kendiliğinden "Yaklaşıyor" olarak işaretlenir.
 - `trailers`, `links`: fragman kartları ve resmî bağlantılar. Videolar sayfaya gömülmez, yeni sekmede açılır.
-- `tracking`: çıkış sonrası takip kartları (PC sürümü, çevrimiçi mod…). Yeni bir duyuru geldiğinde ilgili kartın metnini güncelleyin. `tag: 'unverified'` resmî olmayan basın iddialarını "Doğrulanmadı", `tag: 'waiting'` henüz açıklanmamış konuları "Bekleniyor" olarak etiketler.
+- `tracking`: çıkış sonrası takip kartları (PC sürümü, çevrimiçi mod…). Yeni bir duyuru geldiğinde ilgili kartın metnini güncelleyin. `tag: 'unverified'` resmî olmayan basın iddialarını "Doğrulanmadı", `tag: 'waiting'` henüz açıklanmamış konuları "Bekleniyor", `tag: 'confirmed'` resmî açıklamaya dayanan bilgileri "Açıklandı" olarak etiketler.
 - `sources`: sayfa sonundaki kaynak listesi.
 - `updated`: "Son güncelleme" tarihi. Her içerik değişikliğinde güncelleyin.
 
