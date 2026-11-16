@@ -50,6 +50,20 @@ window.GTA_CONTENT = {
     },
   ],
 
+  // Zaman çizelgesi, eskiden yeniye. Tarihler Türkiye saatine göredir (YYYY-AA-GG).
+  // Tarihi henüz gelmemiş satırlar kendiliğinden "yaklaşıyor" olarak işaretlenir.
+  timeline: [
+    { date: '2023-12-05', text: { tr: 'İlk fragman; çıkış 2025 için duyuruldu', en: 'First trailer; release announced for 2025' } },
+    { date: '2025-05-02', text: { tr: 'İlk erteleme: yeni tarih 26 Mayıs 2026', en: 'First delay: new date May 26, 2026' } },
+    { date: '2025-05-06', text: { tr: 'İkinci fragman', en: 'Second trailer' } },
+    { date: '2025-11-06', text: { tr: 'İkinci erteleme: yeni tarih 19 Kasım 2026', en: 'Second delay: new date November 19, 2026' } },
+    { date: '2026-06-25', text: { tr: 'Ön siparişler açıldı (PS Store ve Xbox Store)', en: 'Pre-orders open (PS Store and Xbox Store)' } },
+    { date: '2026-08-27', text: { tr: 'Extended Look tanıtımı (Netflix, 26 dk)', en: 'Extended Look showcase (Netflix, 26 min)' } },
+    { date: '2026-10-15', text: { tr: 'Çıkış fragmanı', en: 'Launch trailer' } },
+    { date: '2026-11-10', text: { tr: 'Ön yükleme başladı', en: 'Pre-load begins' } },
+    { date: '2026-11-19', text: { tr: 'Çıkış', en: 'Release' } },
+  ],
+
   // Sayfa sonunda listelenen kaynaklar.
   sources: [
     {
@@ -63,6 +77,22 @@ window.GTA_CONTENT = {
     {
       label: { tr: 'Xbox Store Türkiye', en: 'Xbox Store Türkiye' },
       url: 'https://www.xbox.com/tr-TR/games/store/grand-theft-auto-vi/9p3h4968grsm',
+    },
+    {
+      label: { tr: 'Rockstar Games — resmî YouTube kanalı', en: 'Rockstar Games — official YouTube channel' },
+      url: 'https://www.youtube.com/@RockstarGames',
+    },
+    {
+      label: { tr: 'VGC — ilk erteleme', en: 'VGC — first delay' },
+      url: 'https://www.videogameschronicle.com/news/grand-theft-auto-6-has-been-delayed-to-2026/',
+    },
+    {
+      label: { tr: 'VGC — ikinci erteleme', en: 'VGC — second delay' },
+      url: 'https://www.videogameschronicle.com/news/grand-theft-auto-6-has-been-delayed-again-to-the-end-of-2026/',
+    },
+    {
+      label: { tr: 'Medyascope — ön siparişler', en: 'Medyascope — pre-orders' },
+      url: 'https://medyascope.tv/2026/06/25/gta-6-on-siparisleri-acildi-fiyat-80-dolar/',
     },
     {
       label: { tr: 'Forbes — çıkış saatleri', en: 'Forbes — launch times' },

@@ -296,6 +296,73 @@ body {
   font-size: 13px;
   font-weight: 600;
 }
+/* Zaman çizelgesi: solda ray ve noktalar */
+.timeline {
+  list-style: none;
+  padding: 0;
+  max-width: 760px;
+}
+.event {
+  position: relative;
+  padding: 0 0 22px 30px;
+}
+.event:last-child { padding-bottom: 0; }
+.event::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink), var(--gold));
+}
+.event::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 19px;
+  bottom: -2px;
+  width: 1px;
+  background: rgba(255, 255, 255, .2);
+}
+.event:last-child::after { display: none; }
+.event-date {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.event-text {
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.event.upcoming::before {
+  background: transparent;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 12px rgba(255, 211, 110, .7);
+}
+.event.upcoming .event-text { color: var(--gold); }
+
+.badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #1a0630;
+  background: linear-gradient(to right, var(--gold), var(--orange));
+}
+
 .info a { color: var(--gold); text-underline-offset: 3px; }
 .info a:hover { color: var(--text); }
 .info a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }

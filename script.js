@@ -17,6 +17,8 @@
       calendar: 'Takvime ekle',
       about: 'Oyun hakkında ↓',
       factsTitle: 'Künye',
+      timelineTitle: 'Zaman çizelgesi',
+      upcoming: 'Yaklaşıyor',
       sourcesTitle: 'Kaynaklar',
       updated: 'Son güncelleme',
       newTab: 'yeni sekmede açılır',
@@ -39,6 +41,8 @@
       calendar: 'Add to calendar',
       about: 'Game info ↓',
       factsTitle: 'At a glance',
+      timelineTitle: 'Timeline',
+      upcoming: 'Upcoming',
       sourcesTitle: 'Sources',
       updated: 'Last updated',
       newTab: 'opens in a new tab',
@@ -65,6 +69,7 @@
   let t = I18N[lang];
   let daysLeft = 0;
   let released = false;
+  let shownReleased = null; // zaman çizelgesinin en son hangi duruma göre çizildiği
 
   function applyLang() {
     t = I18N[lang];
@@ -123,6 +128,8 @@
       return li;
     }));
 
+    renderTimeline();
+
     const upd = $('updated');
     if (CONTENT.updated) {
       upd.dateTime = CONTENT.updated;
@@ -150,6 +157,8 @@
     $('status').textContent = released ? t.statusOut : t.status;
     $('ics').hidden = released;
     $('progressWrap').hidden = released;
+    // Çıkış anında "yaklaşıyor" işareti kalksın diye çizelge yeniden çizilir.
+    if (shownReleased !== released) renderTimeline();
 
     if (!released) {
       const total = RELEASE.getTime() - WAIT_START.getTime();
@@ -159,6 +168,21 @@
       $('bar').setAttribute('aria-valuenow', shown);
       $('progressText').textContent = t.progress(lang === 'tr' ? shown.replace('.', ',') : shown);
     }
+  }
+
+  function renderTimeline() {
+    shownReleased = released;
+    const now = Date.now();
+    $('timeline').replaceChildren(...(CONTENT.timeline || []).map((e) => {
+      const when = new Date(e.date + 'T00:00:00+03:00');
+      const upcoming = when.getTime() > now;
+      const li = el('li', upcoming ? 'event upcoming' : 'event');
+      const time = el('time', 'event-date', when.toLocaleDateString(t.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: TZ }));
+      time.dateTime = e.date;
+      li.append(time, el('p', 'event-text', tx(e.text)));
+      if (upcoming) li.append(el('span', 'badge', t.upcoming));
+      return li;
+    }));
   }
 
   // ---- Paylaş --------------------------------------------------------------
