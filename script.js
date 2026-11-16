@@ -22,6 +22,8 @@
       trailersTitle: 'Fragmanlar ve bağlantılar',
       officialLinks: 'Resmî bağlantılar',
       watch: 'YouTube’da izle',
+      trackingTitle: 'Çıkış sonrası takip',
+      tags: { waiting: 'Bekleniyor', unverified: 'Doğrulanmadı' },
       sourcesTitle: 'Kaynaklar',
       updated: 'Son güncelleme',
       newTab: 'yeni sekmede açılır',
@@ -49,6 +51,8 @@
       trailersTitle: 'Trailers and links',
       officialLinks: 'Official links',
       watch: 'Watch on YouTube',
+      trackingTitle: 'After launch',
+      tags: { waiting: 'Pending', unverified: 'Unverified' },
       sourcesTitle: 'Sources',
       updated: 'Last updated',
       newTab: 'opens in a new tab',
@@ -114,22 +118,26 @@
     return a;
   }
 
+  // Künye ve takip kartları aynı kalıbı kullanır: başlık, değer, not, etiket, bağlantılar.
+  function infoCard(f) {
+    const box = el('div', f.wide ? 'fact wide' : 'fact');
+    box.append(el('dt', null, tx(f.label)));
+    const dd = el('dd');
+    dd.append(el('span', 'fact-value', tx(f.value)));
+    if (f.note) dd.append(el('span', 'fact-note', tx(f.note)));
+    if (f.tag && t.tags[f.tag]) dd.append(el('span', `badge ${f.tag}`, t.tags[f.tag]));
+    if (f.links) {
+      const links = el('span', 'fact-links');
+      links.append(...f.links.map((l) => extLink(tx(l.label), l.url)));
+      dd.append(links);
+    }
+    box.append(dd);
+    return box;
+  }
+
   function renderInfo() {
-    const facts = $('facts');
-    facts.replaceChildren(...(CONTENT.facts || []).map((f) => {
-      const box = el('div', f.wide ? 'fact wide' : 'fact');
-      box.append(el('dt', null, tx(f.label)));
-      const dd = el('dd');
-      dd.append(el('span', 'fact-value', tx(f.value)));
-      if (f.note) dd.append(el('span', 'fact-note', tx(f.note)));
-      if (f.links) {
-        const links = el('span', 'fact-links');
-        links.append(...f.links.map((l) => extLink(tx(l.label), l.url)));
-        dd.append(links);
-      }
-      box.append(dd);
-      return box;
-    }));
+    $('facts').replaceChildren(...(CONTENT.facts || []).map(infoCard));
+    $('tracking').replaceChildren(...(CONTENT.tracking || []).map(infoCard));
 
     $('sources').replaceChildren(...(CONTENT.sources || []).map((s) => {
       const li = el('li');

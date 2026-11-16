@@ -296,6 +296,9 @@ body {
   font-size: 13px;
   font-weight: 600;
 }
+/* Takip kartları: geniş ekranda 2×2, telefonda alt alta */
+.facts.pairs { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 620px) { .facts.pairs { grid-template-columns: 1fr; } }
 /* Zaman çizelgesi: solda ray ve noktalar */
 .timeline {
   list-style: none;
@@ -361,6 +364,17 @@ body {
   text-transform: uppercase;
   color: #1a0630;
   background: linear-gradient(to right, var(--gold), var(--orange));
+}
+/* Durum etiketleri: "bekleniyor" çerçeveli, "doğrulanmadı" pembe */
+.badge.waiting {
+  color: var(--gold);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(255, 211, 110, .65);
+}
+.badge.unverified {
+  color: var(--text);
+  background: rgba(255, 61, 139, .24);
+  box-shadow: inset 0 0 0 1px rgba(255, 61, 139, .75);
 }
 
 /* Fragman kartları ve resmî bağlantılar */

@@ -95,6 +95,40 @@ window.GTA_CONTENT = {
     { label: 'Xbox Store', url: 'https://www.xbox.com/tr-TR/games/store/grand-theft-auto-vi/9p3h4968grsm' },
   ],
 
+  // Çıkış sonrası takip kartları. Yeni bir duyuru geldiğinde ilgili kartın metnini güncelleyin.
+  // `tag` isteğe bağlıdır: 'waiting' = "Bekleniyor", 'unverified' = "Doğrulanmadı"
+  // (resmî olmayan basın iddiaları için). Kesinleşen bilgide `tag` satırını silin.
+  tracking: [
+    {
+      label: { tr: 'PC sürümü', en: 'PC version' },
+      value: { tr: 'Resmî duyuru yok', en: 'No official announcement' },
+      note: { tr: 'Basında: 2027’nin ilk çeyreği', en: 'Press reports: first quarter of 2027' },
+      tag: 'unverified',
+      links: [
+        { label: { tr: 'Kaynak: GamesBeat', en: 'Source: GamesBeat' }, url: 'https://gamesbeat.com/grand-theft-auto-vis-pc-release-is-slated-for-q1-2027/' },
+      ],
+    },
+    {
+      label: { tr: 'Çevrimiçi mod', en: 'Online mode' },
+      value: { tr: 'Tarih duyurulmadı', en: 'No date announced' },
+      tag: 'waiting',
+    },
+    {
+      // Başlıklar büyük harfle gösterilir; Türkçe görünümde "Online" "ONLİNE" olmasın diye büyük yazıldı.
+      label: { tr: 'Mevcut GTA ONLINE', en: 'Current GTA Online' },
+      value: { tr: 'Çıkıştan sonra da desteklenecek', en: 'Stays supported after launch' },
+      note: { tr: 'Take-Two Interactive açıklaması', en: 'Per Take-Two Interactive' },
+      links: [
+        { label: { tr: 'Kaynak: Yahoo Tech', en: 'Source: Yahoo Tech' }, url: 'https://tech.yahoo.com/gaming/articles/gta-online-supported-beyond-gta-165020046.html' },
+      ],
+    },
+    {
+      label: { tr: 'Yamalar ve ek içerik', en: 'Patches and add-on content' },
+      value: { tr: 'Henüz duyuru yok', en: 'Nothing announced yet' },
+      tag: 'waiting',
+    },
+  ],
+
   // Sayfa sonunda listelenen kaynaklar.
   sources: [
     {
@@ -128,6 +162,14 @@ window.GTA_CONTENT = {
     {
       label: { tr: 'Forbes — çıkış saatleri', en: 'Forbes — launch times' },
       url: 'https://www.forbes.com/sites/brianmazique/2026/11/12/gta-6-unlocks-at-midnight-on-november-19-but-millions-of-americans-can-start-playing-the-night-before/',
+    },
+    {
+      label: { tr: 'GamesBeat — PC sürümü iddiası', en: 'GamesBeat — PC version report' },
+      url: 'https://gamesbeat.com/grand-theft-auto-vis-pc-release-is-slated-for-q1-2027/',
+    },
+    {
+      label: { tr: 'Yahoo Tech — GTA Online desteği', en: 'Yahoo Tech — GTA Online support' },
+      url: 'https://tech.yahoo.com/gaming/articles/gta-online-supported-beyond-gta-165020046.html',
     },
   ],
 };
