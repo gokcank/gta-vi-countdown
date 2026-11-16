@@ -44,9 +44,10 @@ body {
 }
 
 /* ---------- İçerik ---------- */
-/* Dil düğmesi kaydırırken de erişilebilir kalsın diye sabit durur */
+/* Dil düğmesi ilk ekranın sağ üst köşesindedir; aşağı kaydırınca sayfayla birlikte
+   kayar, böylece bilgi bölümlerindeki metnin üstüne binmez. */
 .topbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   z-index: 5;
