@@ -1,11 +1,13 @@
 :root {
-  --night: #14062b;
-  --pink: #ff3d8b;
-  --orange: #ff8a3d;
-  --gold: #ffd36e;
-  --text: #fff4ec;
-  --muted: rgba(255, 244, 236, .78);
-  --glass: rgba(20, 6, 43, .58);
+  /* Vice City renkleri: neon pembe, mor ve turkuaz, gece moru zemin */
+  --night: #160632;
+  --pink: #ff2d95;
+  --purple: #9b5cff;
+  --cyan: #22e4ff;
+  --ink: #12042a; /* açık zemin üstündeki koyu yazı */
+  --text: #f8f3ff;
+  --muted: rgba(248, 243, 255, .78);
+  --glass: rgba(22, 6, 50, .58);
 }
 
 * { box-sizing: border-box; margin: 0; }
@@ -40,7 +42,7 @@ body {
 .shade {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 62% 78% at 100% 100%, rgba(10, 3, 26, .88) 0%, rgba(10, 3, 26, .55) 45%, transparent 75%);
+  background: radial-gradient(ellipse 62% 78% at 100% 100%, rgba(12, 3, 32, .88) 0%, rgba(12, 3, 32, .55) 45%, transparent 75%);
 }
 
 /* ---------- İçerik ---------- */
@@ -67,7 +69,7 @@ body {
   backdrop-filter: blur(8px);
   pointer-events: auto;
 }
-.lang:hover { background: rgba(20, 6, 43, .8); }
+.lang:hover { background: rgba(22, 6, 50, .8); }
 
 /* İlk ekran: tam ekran yüksekliğinde, sayaç paneli sağ altta.
    Üst boşluk dil düğmesine yer bırakır (49px düğme + 16px). */
@@ -103,9 +105,9 @@ body {
   letter-spacing: .28em;
   margin-right: -.28em;
   text-transform: uppercase;
-  text-shadow: 0 1px 3px rgba(20, 6, 43, .95), 0 0 16px rgba(20, 6, 43, .9);
+  text-shadow: 0 1px 3px rgba(22, 6, 50, .95), 0 0 16px rgba(22, 6, 50, .9);
 }
-.released .status { color: var(--gold); }
+.released .status { color: var(--cyan); }
 
 .countdown {
   display: grid;
@@ -124,7 +126,7 @@ body {
   border: 1px solid rgba(255, 255, 255, .18);
   border-radius: 16px;
   backdrop-filter: blur(14px) saturate(140%);
-  box-shadow: 0 14px 40px rgba(10, 2, 24, .45), inset 0 1px 0 rgba(255, 255, 255, .12);
+  box-shadow: 0 14px 40px rgba(12, 3, 32, .45), inset 0 1px 0 rgba(255, 255, 255, .12);
 }
 
 .num {
@@ -132,7 +134,7 @@ body {
   font-size: clamp(34px, 4.6vw, 68px);
   line-height: 1.08;
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 24px rgba(255, 61, 139, .6);
+  text-shadow: 0 0 24px rgba(255, 45, 149, .6);
 }
 
 .lbl {
@@ -155,7 +157,7 @@ body {
   border: 1px solid rgba(255, 255, 255, .14);
   backdrop-filter: blur(10px);
 }
-.dot { color: var(--gold); margin: 0 .35em; }
+.dot { color: var(--cyan); margin: 0 .35em; }
 
 .progress {
   width: 100%;
@@ -169,7 +171,7 @@ body {
 .bar {
   height: 8px;
   border-radius: 999px;
-  background: rgba(20, 6, 43, .6);
+  background: rgba(22, 6, 50, .6);
   border: 1px solid rgba(255, 255, 255, .16);
   overflow: hidden;
 }
@@ -177,7 +179,7 @@ body {
   height: 100%;
   width: 0;
   border-radius: inherit;
-  background: linear-gradient(to right, var(--pink), var(--orange), var(--gold));
+  background: linear-gradient(to right, var(--pink), var(--purple), var(--cyan));
   transition: width 1s ease;
 }
 .progress-text {
@@ -209,29 +211,29 @@ body {
   backdrop-filter: blur(10px);
   transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
 }
-.btn:hover { transform: translateY(-2px); background: rgba(20, 6, 43, .8); }
+.btn:hover { transform: translateY(-2px); background: rgba(22, 6, 50, .8); }
 .btn.primary {
-  color: #1a0630;
+  color: var(--ink);
   border-color: transparent;
-  background: linear-gradient(to right, var(--gold), var(--orange) 55%, var(--pink));
-  box-shadow: 0 8px 28px rgba(255, 61, 139, .45);
+  background: linear-gradient(to right, var(--cyan), var(--pink));
+  box-shadow: 0 8px 28px rgba(255, 45, 149, .45);
 }
-.btn.primary:hover { box-shadow: 0 12px 34px rgba(255, 61, 139, .65); }
-.btn:focus-visible, .lang:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.btn.primary:hover { box-shadow: 0 12px 34px rgba(255, 45, 149, .65); }
+.btn:focus-visible, .lang:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
 [hidden] { display: none !important; }
 
 .disclaimer {
   margin-top: 14px;
   font-size: 10.5px;
   line-height: 1.5;
-  color: rgba(255, 244, 236, .62);
-  text-shadow: 0 1px 4px rgba(10, 3, 26, .9);
+  color: rgba(248, 243, 255, .62);
+  text-shadow: 0 1px 4px rgba(12, 3, 32, .9);
 }
 
 /* ---------- Oyun bilgileri (ilk ekranın altı) ---------- */
 .info {
   padding: clamp(56px, 9vh, 96px) clamp(16px, 3.5vw, 56px) calc(28px + env(safe-area-inset-bottom));
-  background: linear-gradient(to bottom, rgba(10, 3, 26, 0) 0, rgba(10, 3, 26, .9) 72px, rgba(10, 3, 26, .94) 100%);
+  background: linear-gradient(to bottom, rgba(12, 3, 32, 0) 0, rgba(12, 3, 32, .9) 72px, rgba(12, 3, 32, .94) 100%);
 }
 .sec, .foot {
   width: min(100%, 1040px);
@@ -254,7 +256,7 @@ body {
   height: 3px;
   margin-top: 10px;
   border-radius: 999px;
-  background: linear-gradient(to right, var(--pink), var(--orange), var(--gold));
+  background: linear-gradient(to right, var(--pink), var(--purple), var(--cyan));
 }
 
 .facts {
@@ -366,7 +368,7 @@ body {
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--pink), var(--gold));
+  background: linear-gradient(135deg, var(--pink), var(--cyan));
 }
 .event::after {
   content: "";
@@ -395,10 +397,10 @@ body {
 }
 .event.upcoming::before {
   background: transparent;
-  border: 2px solid var(--gold);
-  box-shadow: 0 0 12px rgba(255, 211, 110, .7);
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 12px rgba(34, 228, 255, .7);
 }
-.event.upcoming .event-text { color: var(--gold); }
+.event.upcoming .event-text { color: var(--cyan); }
 
 .badge {
   display: inline-block;
@@ -410,24 +412,24 @@ body {
   line-height: 1;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: #1a0630;
-  background: linear-gradient(to right, var(--gold), var(--orange));
+  color: var(--ink);
+  background: linear-gradient(to right, var(--cyan), #9df4ff);
 }
-/* Durum etiketleri: "bekleniyor" çerçeveli, "doğrulanmadı" pembe, "açıklandı" yeşil */
+/* Durum etiketleri: "bekleniyor" mor, "doğrulanmadı" pembe, "açıklandı" yeşil */
 .badge.confirmed {
   color: #9af0c8;
   background: rgba(96, 220, 170, .14);
   box-shadow: inset 0 0 0 1px rgba(120, 230, 185, .6);
 }
 .badge.waiting {
-  color: var(--gold);
-  background: transparent;
-  box-shadow: inset 0 0 0 1px rgba(255, 211, 110, .65);
+  color: #cfb3ff;
+  background: rgba(155, 92, 255, .14);
+  box-shadow: inset 0 0 0 1px rgba(170, 120, 255, .75);
 }
 .badge.unverified {
   color: var(--text);
-  background: rgba(255, 61, 139, .24);
-  box-shadow: inset 0 0 0 1px rgba(255, 61, 139, .75);
+  background: rgba(255, 45, 149, .24);
+  box-shadow: inset 0 0 0 1px rgba(255, 45, 149, .75);
 }
 
 /* Fragman kartları ve resmî bağlantılar */
@@ -456,7 +458,7 @@ body {
 }
 .trailer:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 211, 110, .6);
+  border-color: rgba(34, 228, 255, .6);
   background: rgba(255, 255, 255, .1);
 }
 .play {
@@ -465,8 +467,8 @@ body {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold), var(--orange) 55%, var(--pink));
-  box-shadow: 0 6px 20px rgba(255, 61, 139, .4);
+  background: linear-gradient(135deg, var(--cyan), var(--pink));
+  box-shadow: 0 6px 20px rgba(255, 45, 149, .4);
 }
 .play::after {
   content: "";
@@ -475,7 +477,7 @@ body {
   top: 13px;
   border-style: solid;
   border-width: 8px 0 8px 12px;
-  border-color: transparent transparent transparent #1a0630;
+  border-color: transparent transparent transparent var(--ink);
 }
 .trailer-body { display: block; min-width: 0; }
 .trailer-title {
@@ -491,7 +493,7 @@ body {
   line-height: 1.4;
   color: var(--muted);
 }
-.trailer-cta { color: var(--gold); font-weight: 600; }
+.trailer-cta { color: var(--cyan); font-weight: 600; }
 
 .sub-title {
   margin: 26px 0 12px;
@@ -508,11 +510,11 @@ body {
   flex-wrap: wrap;
   gap: 10px;
 }
-.btn.ext::after { content: " ↗"; color: var(--gold); }
+.btn.ext::after { content: " ↗"; color: var(--cyan); }
 
-.fact-links a { color: var(--gold); text-underline-offset: 3px; }
+.fact-links a { color: var(--cyan); text-underline-offset: 3px; }
 .fact-links a:hover { color: var(--text); }
-.info a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+.info a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
 
 .foot {
   padding-top: 22px;
@@ -540,7 +542,7 @@ body {
 .updated {
   margin-top: 14px;
   font-size: 12px;
-  color: rgba(255, 244, 236, .62);
+  color: rgba(248, 243, 255, .62);
 }
 
 /* ---------- Dar / dikey ekranlar ----------
@@ -549,7 +551,7 @@ body {
 @media (max-aspect-ratio: 5/4) {
   .scene img { object-position: 85% 30%; }
   .shade {
-    background: linear-gradient(to top, rgba(10, 3, 26, .94) 0%, rgba(10, 3, 26, .8) 30%, rgba(10, 3, 26, .35) 52%, transparent 66%);
+    background: linear-gradient(to top, rgba(12, 3, 32, .94) 0%, rgba(12, 3, 32, .8) 30%, rgba(12, 3, 32, .35) 52%, transparent 66%);
   }
   .hero { justify-content: center; padding-left: 14px; padding-right: 14px; padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
   .panel { width: min(100%, 520px); }
@@ -563,10 +565,10 @@ body {
     letter-spacing: .14em;
     margin-right: -.14em;
     text-transform: uppercase;
-    text-shadow: 0 2px 14px rgba(10, 3, 26, .9);
+    text-shadow: 0 2px 14px rgba(12, 3, 32, .9);
     margin-bottom: 6px;
   }
-  .title span { color: var(--gold); }
+  .title span { color: var(--pink); text-shadow: 0 0 18px rgba(255, 45, 149, .7); }
   .num { font-size: clamp(34px, 10.5vw, 68px); }
   .lbl { font-size: clamp(9px, 2.5vw, 12px); }
   .status { font-size: 12px; }
