@@ -3,7 +3,7 @@
 // Değişiklikten sonra `updated` tarihini de güncelleyin.
 window.GTA_CONTENT = {
   // Bilgilerin son gözden geçirildiği gün (YYYY-AA-GG).
-  updated: '2026-11-17',
+  updated: '2026-11-20',
 
   // Künye. `note` ve `links` isteğe bağlıdır; `wide: true` kartı tüm satıra yayar.
   // \u00a0 = bölünmez boşluk: iki kelimenin satır sonunda ayrılmasını önler.
@@ -45,7 +45,7 @@ window.GTA_CONTENT = {
   // Tutarlar sayı olarak yazılır, sayfa dile göre biçimlendirir (3.999 TL / 3,999 TL).
   // İki mağazada fiyat farklıysa sayı yerine { ps: 79.99, xbox: 74.99 } yazın; ikisi de gösterilir.
   prices: {
-    asOf: '2026-11-17',
+    asOf: '2026-11-20',
     rows: [
       { region: { tr: 'Türkiye', en: 'Türkiye' }, currency: 'TRY', standard: 3999, ultimate: 4999 },
       { region: { tr: 'ABD', en: 'United States' }, currency: 'USD', standard: 79.99, ultimate: 99.99 },
